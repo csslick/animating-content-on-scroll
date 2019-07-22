@@ -4,8 +4,10 @@ $(function() {
   console.log($content.length);
 
   for (var i = 0; i < $content.length; i++) {
+    var img = char_info[i].img_url; 
     var title = char_info[i].name;
     var text = char_info[i].text;
+    console.log(img);
 
     $(".content")
       .eq(i)
@@ -15,6 +17,10 @@ $(function() {
       .eq(i)
       .find("p")
       .text(text);
+    $(".content")
+      .eq(i)
+      .find("img")
+      .attr('src', img);
     console.log(i + ": " + title);
   }
 
