@@ -53,13 +53,13 @@ $(function() {
     var doc_height = $('.content').height();
     var scroll_top = $(window).scrollTop();
     var page_num = 0;
-
+    var y_offset = doc_height / 2;
     // 페이지 위치(번호) 확인
-    if((scroll_top) >= doc_height*3){
+    if(scroll_top >= doc_height*3 - y_offset ){
       page_num = 3
-    } else if(scroll_top >= doc_height*2){
+    } else if(scroll_top >= doc_height*2 - y_offset ){
       page_num = 2
-    } else if(scroll_top >= doc_height*1){
+    } else if(scroll_top >= doc_height*1 - y_offset ){
       page_num = 1
     } else{
       page_num = 0;
