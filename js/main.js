@@ -34,7 +34,6 @@ $(function() {
     $("#page-indicator a").removeClass('active');
     $(this).addClass('active');
 
-
     $("html, body").animate({
       scrollTop: target.offset().top
     });
@@ -43,6 +42,35 @@ $(function() {
 
   // 시작하면 강제로 첫페이지로
   $('#page-indicator a').eq(0).trigger('click')
+
+  // 스크롤시 인디케이터 페이지 번호 감지
+  /* 
+    ## 미세한 스크롤 이동 영역 감지 애매하여
+    ## 마우스 상하방향 감지 페이지 이동으로 수정 예정
+    ## 감지는마우스, 터치 동시 지원
+  */
+  $(window).on('scroll', function(){
+    var doc_height = $('.content').height();
+    var scroll_top = $(window).scrollTop();
+    var page_num = 0;
+
+    // 페이지 위치(번호) 확인
+    if((scroll_top) >= doc_height*3){
+      page_num = 3
+    } else if(scroll_top >= doc_height*2){
+      page_num = 2
+    } else if(scroll_top >= doc_height*1){
+      page_num = 1
+    } else{
+      page_num = 0;
+    }
+
+    $("#page-indicator a").removeClass('active');
+    $("#page-indicator a")
+      .eq(page_num)
+      .addClass('active');
+    console.log('page_num: ' + page_num);
+  }) // end on(scroll)
 
 
 }); // end$()

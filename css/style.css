@@ -44,7 +44,7 @@ section {
   align-items: center;
   justify-content: center;
 }
-section:nth-child(even) {
+section:nth-child(odd) {
   background: #efefef;
 }
 .container {
