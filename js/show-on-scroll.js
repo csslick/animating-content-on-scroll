@@ -6,15 +6,24 @@ var elementsToShow = document.querySelectorAll('.show-on-scroll');
 
 function loop() {
 
-    elementsToShow.forEach(function (element) {
-      if (isElementInViewport(element)) {
-        element.classList.add('is-visible');
-      } else {
-        element.classList.remove('is-visible');
-      }
-    });
+  // elementsToShow.forEach(function (element) {
+  //   if (isElementInViewport(element)) {
+  //     element.classList.add('is-visible');
+  //   } else {
+  //     element.classList.remove('is-visible');
+  //   }
+  // });
+  
+  // for문 IE 지원 수정
+  for(var i = 0; i < elementsToShow.length; i++){
+    if (isElementInViewport(elementsToShow[i])) {
+      elementsToShow[i].classList.add('is-visible');
+    } else {
+      elementsToShow[i].classList.remove('is-visible');
+    }    
+  }
 
-    scroll(loop);
+  scroll(loop);
 }
 
 // Call the loop for the first time
